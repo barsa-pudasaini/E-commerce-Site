@@ -5,19 +5,35 @@ import Footer from '../components/Footer';
 
 const Home = () => {
   return (
-    <>
+    <div style={{ backgroundColor: 'lightpink' }}>
       <Navbar />
-      <header style={{backgroundImage: 'url(/assets/banner.png)', height:'300px', backgroundSize:'cover', backgroundPosition:'center', display:'flex', justifyContent:'center', alignItems:'center'}}>
-        <h1 style={{color:'white', fontSize:'48px', backgroundColor:'rgba(0,0,0,0.5)', padding:'10px 20px', borderRadius:'10px'}}>
-          Welcome to Anime Boyfriend Rental
-        </h1>
+
+      {/* Hero Section */}
+      <header style={{
+        backgroundImage: 'url(/assets/banner.png)',
+        height: '300px',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        textAlign: 'center',
+        color: 'white'
+      }}>
+        <div style={{ backgroundColor: 'rgba(0, 0, 0, 0.5)', padding: '20px', borderRadius: '10px' }}>
+          <h1>💕 Rent Your Dream Anime Boyfriend 💕</h1>
+          <p>Choose from the cutest, coolest, and weirdest boys in the anime world!</p>
+        </div>
       </header>
-      <main style={{padding:'20px'}}>
+
+      <main>
         <Featured />
       </main>
+
       <Footer />
-    </>
+    </div>
   );
-}
+};
 
 export default Home;
+

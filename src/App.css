@@ -1,8 +1,7 @@
 body {
   margin: 0;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #fff0f5; /* light pink background */
-  color: #333;
+  font-family: 'Segoe UI', Tahoma, sans-serif;
+  background-color: lightpink;
 }
 
 a {
@@ -11,5 +10,6 @@ a {
 }
 
 a:hover {
-  color: #ff69b4;
+  color: hotpink;
 }
+
