@@ -5,15 +5,17 @@ import Featured from '../components/Featured';
 import Footer from '../components/Footer';
 
 const Home = () => {
-  return (
+  return ( 
+    
     <div style={{ backgroundColor: 'lightpink' }}>
-      <Navbar />
+      <Navbar/>
       <Hero />
       <main>
         <Featured />
       </main>
       <Footer />
     </div>
+
   );
 };
 
