@@ -1,3 +1,4 @@
+
 // src/components/Navbar.jsx
 import React, { useState } from 'react';
 import { ShoppingCart, Heart } from 'lucide-react';
