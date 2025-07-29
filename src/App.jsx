@@ -1,3 +1,4 @@
+
 // src/App.jsx
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
@@ -54,6 +55,7 @@ function App() {
 
   return (
     <Router>
+
       <Navbar
         isLoggedIn={isLoggedIn}
         onLogin={handleLogin}
@@ -92,10 +94,20 @@ function App() {
 
         {/* Placeholder for signup, assuming it's not a full component yet */}
         <Route path="/signup" element={<div className="min-h-screen bg-cream-white flex items-center justify-center text-2xl text-primary-pink">Sign Up Page</div>} />
-      </Routes>
+
+            </Routes>
     </Router>
   );
 }
 
 export default App;
+
+
+
+
+
+
+
+
+
 
