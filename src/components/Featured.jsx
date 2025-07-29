@@ -24,31 +24,31 @@ import rinne from '../assets/rinne.png';
 
 // 6 characters for Top Characters
 const topCharacters = [
-  { id: 1, name: 'Todoroki', image: idoroki, price: 2000, popularity: 90 },
-  { id: 2, name: 'Gojo Satoru', image: Gojo, price: 1500, popularity: 80 },
-  { id: 3, name: 'Tomoe', image: Tomoe, price: 2500, popularity: 99 },
-  { id: 4, name: 'Howl loirissímo', image: Howl, price: 1800, popularity: 85 },
-  { id: 5, name: 'Megumi Fushiguro', image: Megumi, price: 1700, popularity: 75 },
-  { id: 6, name: 'Sukuna Ryomen', image: Sukuna, price: 1600, popularity: 70 },
+  { id: 1, name: 'Todoroki', image: idoroki, price: 200000, popularity: 90 },
+  { id: 2, name: 'Gojo Satoru', image: Gojo, price: 15000, popularity: 80 },
+  { id: 3, name: 'Tomoe', image: Tomoe, price: 25030, popularity: 99 },
+  { id: 4, name: 'Howl loirissímo', image: Howl, price: 18050, popularity: 85 },
+  { id: 5, name: 'Megumi Fushiguro', image: Megumi, price: 17700, popularity: 75 },
+  { id: 6, name: 'Sukuna Ryomen', image: Sukuna, price: 16800, popularity: 70 },
 ];
 
 // All characters (top + 14 more)
 const allCharacters = [
   ...topCharacters,
-  { id: 7, name: 'Suguru Geto', image: suguru, price: 1300, popularity: 60 },
-  { id: 8, name: 'Osamu Dazai', image: osami, price: 1400, popularity: 65 },
-  { id: 9, name: 'Toji Fushiguro', image: toji, price: 1250, popularity: 55 },
-  { id: 10, name: 'Ken Kaneki', image: ken, price: 1100, popularity: 50 },
-  { id: 11, name: 'Tengen Uzui', image: tengen, price: 1050, popularity: 45 },
-  { id: 12, name: 'Toge Inumaki', image: toge, price: 1150, popularity: 40 },
-  { id: 13, name: 'Inosuke Hashibira', image: inosuke, price: 1000, popularity: 35 },
-  { id: 14, name: 'Akito Yamada', image: akito, price: 950, popularity: 30 },
-  { id: 15, name: 'Gabimaru', image: gabimaru, price: 900, popularity: 25 },
-  { id: 16, name: 'Yamato Endo', image: yamato, price: 850, popularity: 20 },
-  { id: 17, name: 'Kazutora Hanemiya', image: kazutora, price: 800, popularity: 15 },
-  { id: 18, name: 'Levi Ackerman', image: levi, price: 750, popularity: 10 },
-  { id: 19, name: 'Izumi Miyamura', image: miyamura, price: 700, popularity: 5 },
-  { id: 20, name: 'Rinne Amagi', image: rinne, price: 650, popularity: 3 },
+  { id: 7, name: 'Suguru Geto', image: suguru, price: 13500, popularity: 60 },
+  { id: 8, name: 'Osamu Dazai', image: osami, price: 149900, popularity: 65 },
+  { id: 9, name: 'Toji Fushiguro', image: toji, price: 12950, popularity: 55 },
+  { id: 10, name: 'Ken Kaneki', image: ken, price: 11900, popularity: 50 },
+  { id: 11, name: 'Tengen Uzui', image: tengen, price: 100050, popularity: 45 },
+  { id: 12, name: 'Toge Inumaki', image: toge, price: 19150, popularity: 40 },
+  { id: 13, name: 'Inosuke Hashibira', image: inosuke, price: 12000, popularity: 76 },
+  { id: 14, name: 'Akito Yamada', image: akito, price: 95560, popularity: 30 },
+  { id: 15, name: 'Gabimaru', image: gabimaru, price: 90990, popularity: 60 },
+  { id: 16, name: 'Yamato Endo', image: yamato, price: 87650, popularity: 57 },
+  { id: 17, name: 'Kazutora Hanemiya', image: kazutora, price: 89900, popularity: 65 },
+  { id: 18, name: 'Levi Ackerman', image: levi, price: 79850, popularity: 10 },
+  { id: 19, name: 'Izumi Miyamura', image: miyamura, price: 30700, popularity: 59 },
+  { id: 20, name: 'Rinne Amagi', image: rinne, price: 69950, popularity: 3 },
 ];
 
 const Featured = () => {
