@@ -1,14 +1,93 @@
 import React, { useState } from 'react';
+import t1 from '../assets/t1.png';
+import t2 from '../assets/t2.png';
+import t3 from '../assets/t3.png';
+import t4 from '../assets/t4.png';
+import gojo1 from '../assets/gojo1.png';
+import gojo2 from '../assets/gojo2.png';    
+import gojo3 from '../assets/gojo3.png';
+import gojo4 from '../assets/gojo4.png';
+import tomoe1 from '../assets/tomoe1.png';
+import tomoe2 from '../assets/tomoe2.png';
+import tomoe3 from '../assets/tomoe3.png';
+import tomoe4 from '../assets/tomoe4.png';
+import howl1 from '../assets/howl1.png';
+import howl2 from '../assets/howl2.png';        
+import howl3 from '../assets/howl3.png';
+import howl4 from '../assets/howl4.png';
+import m1 from '../assets/m1.png';
+import m2 from '../assets/m2.png'; 
+import m3 from '../assets/m3.png';
+import m4 from '../assets/m4.png';
+import sukuna1 from '../assets/sukuna1.png';
+import sukuna2 from '../assets/sukuna2.png';
+import sukuna3 from '../assets/sukuna3.png';
+import sukuna4 from '../assets/sukuna4.png';
+import suguru1 from '../assets/suguru1.png';
+import suguru2 from '../assets/suguru2.png';
+import suguru3 from '../assets/suguru3.png';
+import suguru4 from '../assets/suguru4.png';
+import osamu1 from '../assets/osamu1.png';
+import osamu2 from '../assets/osamu2.png';
+import osamu3 from '../assets/osamu3.png';
+import osamu4 from '../assets/osamu4.png';
+import toji1 from '../assets/toji1.png';
+import toji2 from '../assets/toji2.png';
+import toji3 from '../assets/toji3.png';
+import toji4 from '../assets/toji4.png';
+import ken1 from '../assets/ken1.png';
+import ken2 from '../assets/ken2.png';
+import ken3 from '../assets/ken3.png';
+import ken4 from '../assets/ken4.png';
+import tengen1 from '../assets/tengen1.png';
+import tengen2 from '../assets/tengen2.png';
+import tengen3 from '../assets/tengen3.png';
+import tengen4 from '../assets/tengen4.png';
+import toge1 from '../assets/toge1.png';
+import toge2 from '../assets/toge2.png';
+import toge3 from '../assets/toge3.png';
+import toge4 from '../assets/toge4.png';
+import inosuke1 from '../assets/inosuke1.png';
+import inosuke2 from '../assets/inosuke2.png';
+import inosuke3 from '../assets/inosuke3.png';
+import inosuke4 from '../assets/inosuke4.png';
+import akito1 from '../assets/akito1.png';
+import akito2 from '../assets/akito2.png';
+import akito3 from '../assets/akito3.png';
+import akito4 from '../assets/akito4.png';
+import gabimaru1 from '../assets/gabimaru1.png';
+import gabimaru2 from '../assets/gabimaru2.png';
+import gabimaru3 from '../assets/gabimaru3.png';
+import gabimaru4 from '../assets/gabimaru4.png';
+import yamato1 from '../assets/yamato1.png';
+import yamato2 from '../assets/yamato2.png';
+import yamato3 from '../assets/yamato3.png';
+import yamato4 from '../assets/yamato4.png';
+import kazutora1 from '../assets/kazutora1.png';
+import kazutora2 from '../assets/kazutora2.png';
+import kazutora3 from '../assets/kazutora3.png';
+import kazutora4 from '../assets/kazutora4.png';
+import levi1 from '../assets/levi1.png';
+import levi2 from '../assets/levi2.png';
+import levi3 from '../assets/levi3.png';
+import levi4 from '../assets/levi4.png';
+import izumi1 from '../assets/izumi1.png';
+import izumi2 from '../assets/izumi2.png';
+import izumi3 from '../assets/izumi3.png';
+import izumi4 from '../assets/izumi4.png';
+import rinne1 from '../assets/rinne1.png';
+import rinne2 from '../assets/rinne2.png';
+import rinne3 from '../assets/rinne3.png';
+import rinne4 from '../assets/rinne4.png';
 const characters = [
   {
     id: 1,
     name: 'Todoroki',
     images: [
-      '/assets/idoroki1.png',
-      '/assets/idoroki2.png',
-      '/assets/idoroki3.png',
-      '/assets/idoroki4.png',
-      '/assets/idoroki5.png',
+      t1,
+      t2,
+      t3,
+      t4
     ],
     price: 200000,
     rating: 4.5,
@@ -22,11 +101,10 @@ const characters = [
     id: 2,
     name: 'Gojo Satoru',
     images: [
-      '/assets/gojo1.png',
-      '/assets/gojo2.png',
-      '/assets/gojo3.png',
-      '/assets/gojo4.png',
-      '/assets/gojo5.png',
+      gojo1,
+      gojo2,
+      gojo3,
+      gojo4
     ],
     price: 15000,
     rating: 5,
@@ -40,11 +118,10 @@ const characters = [
     id: 3,
     name: 'Tomoe',
     images: [
-      '/assets/tomoe1.png',
-      '/assets/tomoe2.png',
-      '/assets/tomoe3.png',
-      '/assets/tomoe4.png',
-      '/assets/tomoe5.png',
+        tomoe1,
+        tomoe2,
+        tomoe3,
+        tomoe4
     ],
     price: 25030,
     rating: 4.8,
@@ -58,11 +135,10 @@ const characters = [
     id: 4,
     name: 'Howl loirissímo',
     images: [
-      '/assets/howl1.png',
-      '/assets/howl2.png',
-      '/assets/howl3.png',
-      '/assets/howl4.png',
-      '/assets/howl5.png',
+        howl1,
+        howl2,
+        howl3,
+        howl4
     ],
     price: 18050,
     rating: 4.7,
@@ -76,11 +152,10 @@ const characters = [
     id: 5,
     name: 'Megumi Fushiguro',
     images: [
-      '/assets/megumi1.png',
-      '/assets/megumi2.png',
-      '/assets/megumi3.png',
-      '/assets/megumi4.png',
-      '/assets/megumi5.png',
+        m1,
+        m2,
+        m3,
+        m4
     ],
     price: 17700,
     rating: 4.3,
@@ -94,11 +169,10 @@ const characters = [
     id: 6,
     name: 'Sukuna Ryomen',
     images: [
-      '/assets/sukuna1.png',
-      '/assets/sukuna2.png',
-      '/assets/sukuna3.png',
-      '/assets/sukuna4.png',
-      '/assets/sukuna5.png',
+        sukuna1,
+        sukuna2,
+        sukuna3,
+        sukuna4
     ],
     price: 16800,
     rating: 4.0,
@@ -112,11 +186,10 @@ const characters = [
     id: 7,
     name: 'Suguru Geto',
     images: [
-      '/assets/suguru1.png',
-      '/assets/suguru2.png',
-      '/assets/suguru3.png',
-      '/assets/suguru4.png',
-      '/assets/suguru5.png',
+        suguru1,
+        suguru2,
+        suguru3,
+        suguru4
     ],
     price: 13500,
     rating: 4.1,
@@ -130,11 +203,10 @@ const characters = [
     id: 8,
     name: 'Osamu Dazai',
     images: [
-      '/assets/osamu1.png',
-      '/assets/osamu2.png',
-      '/assets/osamu3.png',
-      '/assets/osamu4.png',
-      '/assets/osamu5.png',
+        osamu1,
+        osamu2,
+        osamu3,
+        osamu4
     ],
     price: 149900,
     rating: 4.2,
@@ -148,11 +220,10 @@ const characters = [
     id: 9,
     name: 'Toji Fushiguro',
     images: [
-      '/assets/toji1.png',
-      '/assets/toji2.png',
-      '/assets/toji3.png',
-      '/assets/toji4.png',
-      '/assets/toji5.png',
+        toji1,
+        toji2,
+        toji3,
+        toji4
     ],
     price: 12950,
     rating: 4.4,
@@ -166,11 +237,10 @@ const characters = [
     id: 10,
     name: 'Ken Kaneki',
     images: [
-      '/assets/ken1.png',
-      '/assets/ken2.png',
-      '/assets/ken3.png',
-      '/assets/ken4.png',
-      '/assets/ken5.png',
+        ken1,
+        ken2,
+        ken3,
+        ken4
     ],
     price: 11900,
     rating: 4.3,
@@ -184,11 +254,10 @@ const characters = [
     id: 11,
     name: 'Tengen Uzui',
     images: [
-      '/assets/tengen1.png',
-      '/assets/tengen2.png',
-      '/assets/tengen3.png',
-      '/assets/tengen4.png',
-      '/assets/tengen5.png',
+        tengen1,
+        tengen2,
+        tengen3,
+        tengen4
     ],
     price: 100050,
     rating: 4.6,
@@ -202,11 +271,10 @@ const characters = [
     id: 12,
     name: 'Toge Inumaki',
     images: [
-      '/assets/toge1.png',
-      '/assets/toge2.png',
-      '/assets/toge3.png',
-      '/assets/toge4.png',
-      '/assets/toge5.png',
+      toge1,
+      toge2,
+      toge3,
+      toge4
     ],
     price: 19150,
     rating: 4.4,
@@ -220,11 +288,10 @@ const characters = [
     id: 13,
     name: 'Inosuke Hashibira',
     images: [
-      '/assets/inosuke1.png',
-      '/assets/inosuke2.png',
-      '/assets/inosuke3.png',
-      '/assets/inosuke4.png',
-      '/assets/inosuke5.png',
+        inosuke1,
+        inosuke2,
+        inosuke3,
+        inosuke4
     ],
     price: 12000,
     rating: 4.2,
@@ -238,11 +305,10 @@ const characters = [
     id: 14,
     name: 'Akito Yamada',
     images: [
-      '/assets/akito1.png',
-      '/assets/akito2.png',
-      '/assets/akito3.png',
-      '/assets/akito4.png',
-      '/assets/akito5.png',
+        akito1,
+        akito2,
+        akito3,
+        akito4
     ],
     price: 95560,
     rating: 4.3,
@@ -256,11 +322,10 @@ const characters = [
     id: 15,
     name: 'Gabimaru',
     images: [
-      '/assets/gabimaru1.png',
-      '/assets/gabimaru2.png',
-      '/assets/gabimaru3.png',
-      '/assets/gabimaru4.png',
-      '/assets/gabimaru5.png',
+      gabimaru1,
+      gabimaru2,
+      gabimaru3,
+      gabimaru4
     ],
     price: 90990,
     rating: 4.0,
@@ -274,11 +339,10 @@ const characters = [
     id: 16,
     name: 'Yamato Endo',
     images: [
-      '/assets/yamato1.png',
-      '/assets/yamato2.png',
-      '/assets/yamato3.png',
-      '/assets/yamato4.png',
-      '/assets/yamato5.png',
+        yamato1,
+        yamato2,
+        yamato3,
+        yamato4
     ],
     price: 87650,
     rating: 4.1,
@@ -292,11 +356,10 @@ const characters = [
     id: 17,
     name: 'Kazutora Hanemiya',
     images: [
-      '/assets/kazutora1.png',
-      '/assets/kazutora2.png',
-      '/assets/kazutora3.png',
-      '/assets/kazutora4.png',
-      '/assets/kazutora5.png',
+        kazutora1,
+        kazutora2,
+        kazutora3,
+        kazutora4
     ],
     price: 89900,
     rating: 4.2,
@@ -310,11 +373,10 @@ const characters = [
     id: 18,
     name: 'Levi Ackerman',
     images: [
-      '/assets/levi1.png',
-      '/assets/levi2.png',
-      '/assets/levi3.png',
-      '/assets/levi4.png',
-      '/assets/levi5.png',
+        levi1,
+        levi2,
+        levi3,
+        levi4
     ],
     price: 79850,
     rating: 5,
@@ -328,11 +390,10 @@ const characters = [
     id: 19,
     name: 'Izumi Miyamura',
     images: [
-      '/assets/miyamura1.png',
-      '/assets/miyamura2.png',
-      '/assets/miyamura3.png',
-      '/assets/miyamura4.png',
-      '/assets/miyamura5.png',
+        izumi1,
+        izumi2,
+        izumi3,
+        izumi4
     ],
     price: 30700,
     rating: 4.1,
@@ -346,11 +407,10 @@ const characters = [
     id: 20,
     name: 'Rinne Amagi',
     images: [
-      '/assets/rinne1.png',
-      '/assets/rinne2.png',
-      '/assets/rinne3.png',
-      '/assets/rinne4.png',
-      '/assets/rinne5.png',
+      rinne1,
+      rinne2,
+      rinne3,
+      rinne4
     ],
     price: 69950,
     rating: 4.0,
@@ -413,89 +473,89 @@ const characters = [
     alert('Registration successful! You can now add to cart or wishlist.');
   };
 
-  return (
-    <div style={{ padding: '20px', maxWidth: '700px', margin: 'auto', fontFamily: 'Arial, sans-serif' }}>
-      <h1>{character.name}</h1>
+return (
+    <div style={{ padding: '20px', maxWidth: '900px', margin: 'auto', fontFamily: 'Arial, sans-serif' }}>
+        <h1>{character.name}</h1>
 
-      <div style={{ position: 'relative', width: '100%', height: '400px', marginBottom: '20px' }}>
-        <img
-          src={character.images[currentImageIndex]}
-          alt={`${character.name} image ${currentImageIndex + 1}`}
-          style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '15px' }}
-        />
-        <button onClick={prevImage} style={navBtnStyle}>‹</button>
-        <button onClick={nextImage} style={{ ...navBtnStyle, right: '10px', left: 'auto' }}>›</button>
-      </div>
-
-      <p><strong>Description:</strong> {character.description}</p>
-      <p><strong>Personality:</strong> {character.personality}</p>
-      <p><strong>Likes:</strong> {character.likes.join(', ')}</p>
-      <p><strong>Dislikes:</strong> {character.dislikes.join(', ')}</p>
-      <p><strong>Fun dialogue:</strong> "{character.dialogue}"</p>
-      <p><strong>Rating:</strong> {'⭐'.repeat(Math.floor(character.rating))}{character.rating % 1 ? '⭐️' : ''}</p>
-      <p><strong>Price:</strong> Rs. {character.price}</p>
-
-      <button
-        onClick={() => showCuteAlert('Yay! Rented successfully..I\'m on my way (❁´◡`❁)')}
-        style={rentBtnStyle}
-      >
-        Rent
-      </button>
-      <button onClick={handleButtonClick} style={cartBtnStyle}>Add to Cart</button>
-      <button onClick={handleButtonClick} style={wishBtnStyle}>Add to Wishlist</button>
-
-      {showRegister && (
-        <div style={popupStyle}>
-          <form onSubmit={handleFormSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
-            <h3>{showLogin ? 'Login' : 'Register'} First</h3>
-            <input
-              type="email"
-              placeholder="Email"
-              required
-              value={formData.email}
-              onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-              style={inputStyle}
+        <div style={{ position: 'relative', width: '100%', height: '600px', marginBottom: '20px' }}>
+            <img
+                src={character.images[currentImageIndex]}
+                alt={`${character.name} image ${currentImageIndex + 1}`}
+                style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '15px' }}
             />
-            <input
-              type="password"
-              placeholder="Password"
-              required
-              value={formData.password}
-              onChange={(e) => setFormData({ ...formData, password: e.target.value })}
-              style={inputStyle}
-            />
-            <button type="submit" style={registerBtnStyle}>
-              {showLogin ? 'Login' : 'Register'}
-            </button>
-            <p style={{ cursor: 'pointer', color: 'blue' }} onClick={() => setShowLogin(!showLogin)}>
-              {showLogin ? 'Need an account? Register' : 'Already have an account? Login'}
-            </p>
-            <button type="button" onClick={() => setShowRegister(false)} style={cancelBtnStyle}>Cancel</button>
-          </form>
+            <button onClick={prevImage} style={navBtnStyle}>‹</button>
+            <button onClick={nextImage} style={{ ...navBtnStyle, right: '10px', left: 'auto' }}>›</button>
         </div>
-      )}
 
-      {/* Cute popup alert */}
-      {showCuteMsg && (
-        <div style={{
-          position: 'fixed',
-          bottom: '20px',
-          right: '20px',
-          backgroundColor: '#ff69b4',
-          color: 'white',
-          padding: '15px 25px',
-          borderRadius: '12px',
-          boxShadow: '0 4px 8px rgba(0,0,0,0.2)',
-          fontWeight: 'bold',
-          fontSize: '16px',
-          zIndex: 1000,
-          animation: 'popin 0.3s ease',
-        }}>
-          {cuteMsg}
-        </div>
-      )}
+        <p><strong>Description:</strong> {character.description}</p>
+        <p><strong>Personality:</strong> {character.personality}</p>
+        <p><strong>Likes:</strong> {character.likes.join(', ')}</p>
+        <p><strong>Dislikes:</strong> {character.dislikes.join(', ')}</p>
+        <p><strong>Fun dialogue:</strong> "{character.dialogue}"</p>
+        <p><strong>Rating:</strong> {'⭐'.repeat(Math.floor(character.rating))}{character.rating % 1 ? '⭐️' : ''}</p>
+        <p><strong>Price:</strong> Rs. {character.price}</p>
+
+        <button
+            onClick={() => showCuteAlert('Yay! Rented successfully..I\'m on my way (❁´◡`❁)')}
+            style={rentBtnStyle}
+        >
+            Rent
+        </button>
+        <button onClick={handleButtonClick} style={cartBtnStyle}>Add to Cart</button>
+        <button onClick={handleButtonClick} style={wishBtnStyle}>Add to Wishlist</button>
+
+        {showRegister && (
+            <div style={popupStyle}>
+                <form onSubmit={handleFormSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+                    <h3>{showLogin ? 'Login' : 'Register'} First</h3>
+                    <input
+                        type="email"
+                        placeholder="Email"
+                        required
+                        value={formData.email}
+                        onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                        style={inputStyle}
+                    />
+                    <input
+                        type="password"
+                        placeholder="Password"
+                        required
+                        value={formData.password}
+                        onChange={(e) => setFormData({ ...formData, password: e.target.value })}
+                        style={inputStyle}
+                    />
+                    <button type="submit" style={registerBtnStyle}>
+                        {showLogin ? 'Login' : 'Register'}
+                    </button>
+                    <p style={{ cursor: 'pointer', color: 'blue' }} onClick={() => setShowLogin(!showLogin)}>
+                        {showLogin ? 'Need an account? Register' : 'Already have an account? Login'}
+                    </p>
+                    <button type="button" onClick={() => setShowRegister(false)} style={cancelBtnStyle}>Cancel</button>
+                </form>
+            </div>
+        )}
+
+        {/* Cute popup alert */}
+        {showCuteMsg && (
+            <div style={{
+                position: 'fixed',
+                bottom: '20px',
+                right: '20px',
+                backgroundColor: '#ff69b4',
+                color: 'white',
+                padding: '15px 25px',
+                borderRadius: '12px',
+                boxShadow: '0 4px 8px rgba(0,0,0,0.2)',
+                fontWeight: 'bold',
+                fontSize: '16px',
+                zIndex: 1000,
+                animation: 'popin 0.3s ease',
+            }}>
+                {cuteMsg}
+            </div>
+        )}
     </div>
-  );
+);
 };
 
 const navBtnStyle = {
