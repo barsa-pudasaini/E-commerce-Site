@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+
+// Images import garnu (timro assets folder bata)
 import idoroki from '../assets/idoroki.png';
 import Gojo from '../assets/Gojo.png';
 import Tomoe from '../assets/Tomoe.png';
 import Howl from '../assets/Howl.png';
 import Megumi from '../assets/Megumi.png';
 import Sukuna from '../assets/Sukuna.png';
-
-// New characters image imports
 import suguru from '../assets/suguru.png';
 import osami from '../assets/osami.png';
 import toji from '../assets/toji.png';
@@ -22,7 +23,7 @@ import levi from '../assets/levi.png';
 import miyamura from '../assets/miyamura.png';
 import rinne from '../assets/rinne.png';
 
-// 6 characters for Top Characters
+// Characters ko data (array)
 const topCharacters = [
   { id: 1, name: 'Todoroki', image: idoroki, price: 200000, popularity: 90 },
   { id: 2, name: 'Gojo Satoru', image: Gojo, price: 15000, popularity: 80 },
@@ -32,7 +33,6 @@ const topCharacters = [
   { id: 6, name: 'Sukuna Ryomen', image: Sukuna, price: 16800, popularity: 70 },
 ];
 
-// All characters (top + 14 more)
 const allCharacters = [
   ...topCharacters,
   { id: 7, name: 'Suguru Geto', image: suguru, price: 13500, popularity: 60 },
@@ -54,6 +54,7 @@ const allCharacters = [
 const Featured = () => {
   const [sort, setSort] = useState('popularity');
 
+  // Sort garne logic
   const sortedAll = [...allCharacters].sort((a, b) => {
     if (sort === 'price-low') return a.price - b.price;
     if (sort === 'price-high') return b.price - a.price;
@@ -85,18 +86,21 @@ const Featured = () => {
             <img src={char.image} alt={char.name} style={{ width: '100%', borderRadius: '10px' }} />
             <h3>{char.name}</h3>
             <p><strong>Price:</strong> Rs. {char.price}</p>
-            <button
-              style={{
-                marginTop: '10px',
-                padding: '8px 12px',
-                backgroundColor: '#ff69b4',
-                color: 'white',
-                border: 'none',
-                borderRadius: '6px',
-              }}
-            >
-              View Profile
-            </button>
+            <Link to={`/profile/${char.id}`}>
+              <button
+                style={{
+                  marginTop: '10px',
+                  padding: '8px 12px',
+                  backgroundColor: '#ff69b4',
+                  color: 'white',
+                  border: 'none',
+                  borderRadius: '6px',
+                  cursor: 'pointer',
+                }}
+              >
+                View Profile
+              </button>
+            </Link>
           </div>
         ))}
       </div>
@@ -139,18 +143,21 @@ const Featured = () => {
             <img src={char.image} alt={char.name} style={{ width: '100%', borderRadius: '10px' }} />
             <h3>{char.name}</h3>
             <p><strong>Price:</strong> Rs. {char.price}</p>
-            <button
-              style={{
-                marginTop: '10px',
-                padding: '8px 12px',
-                backgroundColor: '#ff69b4',
-                color: 'white',
-                border: 'none',
-                borderRadius: '6px',
-              }}
-            >
-              View Profile
-            </button>
+            <Link to={`/profile/${char.id}`}>
+              <button
+                style={{
+                  marginTop: '10px',
+                  padding: '8px 12px',
+                  backgroundColor: '#ff69b4',
+                  color: 'white',
+                  border: 'none',
+                  borderRadius: '6px',
+                  cursor: 'pointer',
+                }}
+              >
+                View Profile
+              </button>
+            </Link>
           </div>
         ))}
       </div>
