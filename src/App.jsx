@@ -59,14 +59,21 @@ function App() {
         <Route path="/cart" element={<Cart />} />
         <Route path="/wishlist" element={<Wishlist />} />
         <Route path="/about" element={<About />} />
-       <Route path="/contact" element={<Contact />} />
- <Route path="/profile/:id" element={<ProfilePage isLoggedIn={isLoggedIn} />} />
-
-
-        {/* Placeholder for signup, assuming it's not a full component yet */}
-        <Route path="/signup" element={<div className="min-h-screen bg-cream-white flex items-center justify-center text-2xl text-primary-pink">Sign Up Page</div>} />
-
-            </Routes>
+        <Route path="/contact" element={<Contact />} />
+        {/* Pass both isLoggedIn and setIsLoggedIn here */}
+        <Route
+          path="/profile/:id"
+          element={<ProfilePage isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />}
+        />
+        <Route
+          path="/signup"
+          element={
+            <div className="min-h-screen bg-cream-white flex items-center justify-center text-2xl text-primary-pink">
+              Sign Up Page
+            </div>
+          }
+        />
+      </Routes>
     </Router>
   );
 }

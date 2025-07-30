@@ -424,14 +424,13 @@ import rinne4 from '../assets/rinne4.png';
   },
 ];
 
- const ProfilePage = ({ isLoggedIn }) => {
+ const ProfilePage = ({ isLoggedIn, setIsLoggedIn }) => {
   const { id } = useParams();
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [showRegister, setShowRegister] = useState(false);
   const [formData, setFormData] = useState({ email: '', password: '' });
-  const [showLogin, setShowLogin] = useState(false);
-  const [cuteMsg, setCuteMsg] = useState('');
   const [showCuteMsg, setShowCuteMsg] = useState(false);
+  const [cuteMsg, setCuteMsg] = useState('');
 
   const character = characters.find((c) => c.id === Number(id)) || characters[0];
 
@@ -449,17 +448,32 @@ import rinne4 from '../assets/rinne4.png';
     setTimeout(() => setShowCuteMsg(false), 2500);
   };
 
-  const handleButtonClick = () => {
+  const handleActionClick = (actionName) => {
     if (!isLoggedIn) {
       setShowRegister(true);
     } else {
-      showCuteAlert('Added successfully!');
+      let message = '';
+      switch (actionName) {
+        case 'Rent':
+          message = "Yay! Rented successfully..I'm on my way (❁´◡`❁)";
+          break;
+        case 'Add to Cart':
+          message = "Added to cart! Can't wait for you to check out 💖";
+          break;
+        case 'Add to Wishlist':
+          message = "Added to your wishlist! Saving the cuteness for later 🌸";
+          break;
+        default:
+          message = `${actionName} successful!`;
+      }
+      showCuteAlert(message);
     }
   };
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
     const { email, password } = formData;
+
     if (!email.includes('@') || !email.includes('.')) {
       alert('Email format is invalid');
       return;
@@ -468,14 +482,18 @@ import rinne4 from '../assets/rinne4.png';
       alert('Password must be at least 4 characters');
       return;
     }
-    alert('Registration successful! You can now add to cart or wishlist.');
+
+    alert('YayyXD!! Registration successful! You can now add to cart, wishlist, or rent.');
     setShowRegister(false);
+    setIsLoggedIn(true);
     setFormData({ email: '', password: '' });
   };
 
   return (
-    <div style={{ padding: '20px', maxWidth: '900px', margin: 'auto', fontFamily: 'Arial, sans-serif' }}>
+    <div style={{ padding: '40px', maxWidth: '700px', margin: 'auto', fontFamily: 'Arial, sans-serif' }}>
+      <h1>                🎀 Character Profile 🎀 </h1>
       <h1>{character.name}</h1>
+
 
       <div style={{ position: 'relative', width: '100%', height: '600px', marginBottom: '20px' }}>
         <img
@@ -495,25 +513,14 @@ import rinne4 from '../assets/rinne4.png';
       <p><strong>Rating:</strong> {'⭐'.repeat(Math.floor(character.rating))}{character.rating % 1 ? '⭐️' : ''}</p>
       <p><strong>Price:</strong> Rs. {character.price}</p>
 
-      <button
-        onClick={() => {
-          if (!isLoggedIn) {
-            setShowRegister(true);
-          } else {
-            showCuteAlert('Yay! Rented successfully..I\'m on my way (❁´◡`❁)');
-          }
-        }}
-        style={rentBtnStyle}
-      >
-        Rent
-      </button>
-      <button onClick={handleButtonClick} style={cartBtnStyle}>Add to Cart</button>
-      <button onClick={handleButtonClick} style={wishBtnStyle}>Add to Wishlist</button>
+      <button onClick={() => handleActionClick('Rent')} style={rentBtnStyle}>Rent Me UwU</button>
+      <button onClick={() => handleActionClick('Add to Cart')} style={cartBtnStyle}>🛒</button>
+      <button onClick={() => handleActionClick('Add to Wishlist')} style={wishBtnStyle}>💗</button>
 
       {showRegister && (
         <div style={popupStyle}>
           <form onSubmit={handleFormSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
-            <h3>{showLogin ? 'Login' : 'Register'} First</h3>
+            <h3>Register First</h3>
             <input
               type="email"
               placeholder="Email"
@@ -530,32 +537,14 @@ import rinne4 from '../assets/rinne4.png';
               onChange={(e) => setFormData({ ...formData, password: e.target.value })}
               style={inputStyle}
             />
-            <button type="submit" style={registerBtnStyle}>
-              {showLogin ? 'Login' : 'Register'}
-            </button>
-            <p style={{ cursor: 'pointer', color: 'blue' }} onClick={() => setShowLogin(!showLogin)}>
-              {showLogin ? 'Need an account? Register' : 'Already have an account? Login'}
-            </p>
+            <button type="submit" style={registerBtnStyle}>Register</button>
             <button type="button" onClick={() => setShowRegister(false)} style={cancelBtnStyle}>Cancel</button>
           </form>
         </div>
       )}
 
       {showCuteMsg && (
-        <div style={{
-          position: 'fixed',
-          bottom: '20px',
-          right: '20px',
-          backgroundColor: '#ff69b4',
-          color: 'white',
-          padding: '15px 25px',
-          borderRadius: '12px',
-          boxShadow: '0 4px 8px rgba(0,0,0,0.2)',
-          fontWeight: 'bold',
-          fontSize: '16px',
-          zIndex: 1000,
-          animation: 'popin 0.3s ease',
-        }}>
+        <div style={cuteMsgStyle}>
           {cuteMsg}
         </div>
       )}
@@ -646,7 +635,19 @@ const cancelBtnStyle = {
   cursor: 'pointer',
 };
 
+const cuteMsgStyle = {
+  position: 'fixed',
+  bottom: '30px',
+  right: '30px',
+  backgroundColor: '#ff69b4',
+  color: 'white',
+  padding: '15px 25px',
+  borderRadius: '12px',
+  boxShadow: '0 4px 8px rgba(0,0,0,0.2)',
+  fontWeight: 'bold',
+  fontSize: '16px',
+  zIndex: 1000,
+  animation: 'popin 0.6s ease',
+};
+
 export default ProfilePage;
-
-
-
