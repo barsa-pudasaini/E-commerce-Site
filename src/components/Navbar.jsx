@@ -134,7 +134,10 @@ const Navbar = ({ isLoggedIn, onLogin, onLogout, cartItemsCount, wishlistItemsCo
         </li>
         <li><Link to="/signup" style={linkStyle}>Sign Up</Link></li>
         <li><Link to="/about" style={linkStyle}>About</Link></li>     {/* This links to your new About page */}
-        <li><Link to="/contact" style={linkStyle}>Contact</Link></li> {/* This links to your new Contact page */}
+       <li>
+  <Link to="/contact" style={linkStyle}>Contact</Link>
+
+</li> {/* This links to your new Contact page */}
       </ul>
 
       {showLoginModal && (

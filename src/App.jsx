@@ -90,7 +90,7 @@ function App() {
         />
         {/* These are your new routes for About and Contact */}
         <Route path="/about" element={<About />} />
-        <Route path="/contact" element={<Contact />} />
+       <Route path="/contact" element={<Contact />} />
 
         {/* Placeholder for signup, assuming it's not a full component yet */}
         <Route path="/signup" element={<div className="min-h-screen bg-cream-white flex items-center justify-center text-2xl text-primary-pink">Sign Up Page</div>} />
