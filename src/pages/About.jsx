@@ -1,6 +1,4 @@
-// src/pages/About.jsx
 import React from 'react';
-import { Heart, Sparkles, UserCheck } from 'lucide-react';
 
 import grishma from '../assets/grishma.png';
 import garima from '../assets/garima.png';
@@ -32,68 +30,121 @@ const About = () => {
   ];
 
   return (
-    <div className="bg-gradient-to-br from-pink-50 to-purple-50 min-h-screen py-16 px-4 sm:px-6 lg:px-8 font-sans">
-      <div className="max-w-5xl mx-auto">
-        <h1 className="text-5xl font-extrabold text-primary-pink text-center mb-12 drop-shadow-lg flex items-center justify-center gap-4">
-          <Heart size={48} className="text-red-400" />
-          Welcome to Rent A Boyfriend
-          <Heart size={48} className="text-red-400" />
-        </h1>
+    <div style={{
+      background: 'linear-gradient(135deg, #ffe4f0, #f3d6ff)',
+      minHeight: '100vh',
+      padding: '40px 20px',
+      fontFamily: "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif",
+      color: '#6b2a45',
+    }}>
+      <h1 style={{
+        textAlign: 'center',
+        fontSize: '3.5rem',
+        marginBottom: '30px',
+        color: '#d6336c',
+        fontWeight: '900',
+        textShadow: '2px 2px 5px #f9c5d5',
+      }}>
+        💖 Welcome to Rent A Boyfriend 💖
+      </h1>
 
-        {/* Intro Section */}
-        <section className="mb-16 bg-white p-10 rounded-2xl shadow-xl border border-pink-200 backdrop-blur-sm bg-opacity-90">
-          <h2 className="text-4xl font-bold text-accent-blue mb-6 text-center flex items-center justify-center gap-3">
-            Your Ultimate Anime Companion Adventure!
-          </h2>
-          <p className="text-gray-800 text-xl leading-relaxed mt-4">
-            Ever wished for a perfectly understanding companion from your favorite animated worlds? <strong>Rent A Boyfriend</strong> makes that dream a reality!
-          </p>
-          <p className="text-gray-800 text-xl leading-relaxed mt-6">
-            Need a witty conversationalist, a stoic protector, or a gentle listener? Our companions fill your life with joy and imagination.
-          </p>
-          <p className="text-gray-800 text-xl leading-relaxed mt-6">
-            Dive into a delightful escape, and truly connect with the characters you adore. <Sparkles className="inline-block ml-2 text-yellow-400 animate-pulse" />
-          </p>
-        </section>
+      <section style={{
+        maxWidth: 700,
+        margin: '0 auto 60px',
+        backgroundColor: '#ffd6e8',
+        padding: '30px 35px',
+        borderRadius: '18px',
+        boxShadow: '0 8px 18px rgba(214, 51, 108, 0.3)',
+        fontSize: '1.3rem',
+        lineHeight: '1.8',
+        userSelect: 'none',
+      }}>
+        <p>
+          Ever wished for a perfectly understanding companion from your favorite anime worlds? <strong>Rent A Boyfriend</strong> makes that dream a reality! Whether you’re craving a witty conversationalist to brighten your day, a stoic protector to feel safe and cared for, or simply a gentle listener to share your thoughts with, our collection of charming characters is here to bring warmth and joy to your everyday life.
+        </p>
+        <p style={{ marginTop: '20px' }}>
+          Our platform is designed with love and attention to detail, ensuring a seamless and delightful experience as you explore, choose, and connect with your ideal anime partner. From heartfelt moments to playful banter, Rent A Boyfriend offers a unique escape that blends fantasy with companionship — all tailored to your preferences and mood.
+        </p>
+        <p style={{ marginTop: '20px' }}>
+          Dive into your new favorite experience — the ultimate blend of charm, fun, and companionship, all just a click away. Let your imagination run free and make every day a little brighter with Rent A Boyfriend by your side.
+        </p>
+      </section>
 
-        {/* Team Section */}
-        <section className="bg-white p-10 rounded-2xl shadow-xl border border-blue-200 backdrop-blur-sm bg-opacity-90">
-          <h2 className="text-4xl font-bold text-accent-blue text-center mb-10 flex items-center justify-center gap-3">
-            <UserCheck size={36} className="text-green-500" />
-            Meet the Brilliant Minds Behind the Magic!
-          </h2>
+      <h2 style={{
+        textAlign: 'center',
+        fontSize: '2.8rem',
+        marginBottom: '40px',
+        color: '#b33462',
+        fontWeight: '700',
+        textShadow: '1px 1px 3px #f9c5d5',
+        userSelect: 'none',
+      }}>
+        👥 Meet the Team Behind the Magic 👥
+      </h2>
 
-          <div className="space-y-6">
-            {teamMembers.map((member, index) => (
-              <div
-                key={index}
-                className="flex items-center justify-between bg-gradient-to-br from-blue-50 to-pink-50 p-5 rounded-xl border border-purple-100 shadow-md group hover:shadow-lg transition duration-300"
-              >
-                {/* Text */}
-                <div className="flex flex-col text-left flex-grow pr-4">
-                  <h3 className="text-xl font-semibold text-primary-pink group-hover:text-purple-600 transition-colors duration-300">
-                    {member.name}
-                  </h3>
-                  <p className="text-gray-700 italic mt-1">
-                    "{member.bio}"
-                  </p>
-                </div>
-
-                {/* Image */}
-                <img
-  src={member.avatar}
-  alt={member.name}
-  style={{ width: '250px', height: '250px' }}
-  className="rounded-full object-cover border-2 border-pink-300 shadow-md shrink-0"
-/>
-
-              </div>
-            ))}
+      <section style={{
+        maxWidth: 1000,
+        margin: '0 auto',
+        display: 'flex',
+        flexWrap: 'wrap',
+        justifyContent: 'center',
+        gap: '30px',
+      }}>
+        {teamMembers.map((member, i) => (
+          <div key={i} style={{
+            backgroundColor: '#ffd6e8',
+            borderRadius: '20px',
+            boxShadow: '0 10px 20px rgba(214, 51, 108, 0.25)',
+            padding: '20px',
+            width: '260px',
+            textAlign: 'center',
+            transition: 'transform 0.3s ease, box-shadow 0.3s ease',
+            cursor: 'default',
+          }}
+          onMouseEnter={e => {
+            e.currentTarget.style.transform = 'translateY(-10px)';
+            e.currentTarget.style.boxShadow = '0 15px 25px rgba(214, 51, 108, 0.4)';
+          }}
+          onMouseLeave={e => {
+            e.currentTarget.style.transform = 'translateY(0)';
+            e.currentTarget.style.boxShadow = '0 10px 20px rgba(214, 51, 108, 0.25)';
+          }}>
+            <img
+              src={member.avatar}
+              alt={member.name}
+              style={{
+                width: '160px',
+                height: '160px',
+                objectFit: 'cover',
+                borderRadius: '50%',
+                border: '5px solid #ff8cc1',
+                boxShadow: '0 6px 10px rgba(255, 140, 193, 0.6)',
+                marginBottom: '15px',
+              }}
+            />
+            <h3 style={{
+              color: '#b33462',
+              fontSize: '1.8rem',
+              marginBottom: '10px',
+              fontWeight: '700',
+            }}>
+              {member.name}
+            </h3>
+            <p style={{
+              fontStyle: 'italic',
+              color: '#6b2a45',
+              fontSize: '1rem',
+              lineHeight: '1.4',
+              padding: '0 10px',
+              userSelect: 'none',
+            }}>
+              "{member.bio}"
+            </p>
           </div>
-        </section>
-      </div>
+        ))}
+      </section>
     </div>
   );
 };
 
-export default About;  
+export default About;

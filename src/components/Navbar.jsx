@@ -174,10 +174,18 @@ const Navbar = ({
           )}
         </li>
   <li>
-    <Link to="/signup" style={linkStyle}>
-      Sign Up
-    </Link>
-  </li>
+  <button
+    onClick={() => {
+      setIsLoginMode(false); // show register form
+      setShowAuthModal(true);
+      resetForm();
+    }}
+    style={{ ...linkStyle, background: 'none', border: 'none', cursor: 'pointer', padding: 0 }}
+  >
+    Sign Up
+  </button>
+</li>
+
   <li>
     <Link to="/about" style={linkStyle}>
       About
