@@ -1,40 +1,34 @@
-
-// src/App.jsx
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
-// IMPORTANT: Ensure these paths and component names match your actual files
 import Navbar from './components/Navbar';
-import Home from './pages/Home';         // Make sure your file is Home.jsx
-import Cart from './pages/Cart';         // Make sure your file is Cart.jsx
-import Wishlist from './pages/Wishlist'; // Make sure your file is Wishlist.jsx
-import About from './pages/About';       // Make sure your file is About.jsx
-import Contact from './pages/Contact'; 
-import ProfilePage from './pages/profile';  // Make sure your file is Contact.jsx
+import Home from './pages/Home';
+import Cart from './pages/Cart';
+import Wishlist from './pages/Wishlist';
+import About from './pages/About';
+import Contact from './pages/Contact';
+import ProfilePage from './pages/profile';
 
 function App() {
-  // Central state for login, cart, and wishlist
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [cartItems, setCartItems] = useState(() => {
     try {
       const savedCart = localStorage.getItem('cartItems');
       return savedCart ? JSON.parse(savedCart) : [];
-    } catch (error) {
-      console.error("Error loading cart from storage:", error);
-      return [];
-    }
-  });
-  const [wishlistItems, setWishlistItems] = useState(() => {
-    try {
-      const savedWishlist = localStorage.getItem('wishlistItems');
-      return savedWishlist ? JSON.parse(savedWishlist) : [];
-    } catch (error) {
-      console.error("Error loading wishlist from storage:", error);
+    } catch {
       return [];
     }
   });
 
-  // Save cart/wishlist to localStorage whenever they change
+  const [wishlistItems, setWishlistItems] = useState(() => {
+    try {
+      const savedWishlist = localStorage.getItem('wishlistItems');
+      return savedWishlist ? JSON.parse(savedWishlist) : [];
+    } catch {
+      return [];
+    }
+  });
+
   useEffect(() => {
     localStorage.setItem('cartItems', JSON.stringify(cartItems));
   }, [cartItems]);
@@ -43,20 +37,16 @@ function App() {
     localStorage.setItem('wishlistItems', JSON.stringify(wishlistItems));
   }, [wishlistItems]);
 
-  // Login/Logout handlers
-  const handleLogin = () => {
-    setIsLoggedIn(true);
-  };
+  const handleLogin = () => setIsLoggedIn(true);
   const handleLogout = () => {
     setIsLoggedIn(false);
     setCartItems([]);
     setWishlistItems([]);
-    alert('You have logged out. Your cart and wishlist are now empty.');
+    alert('Logged out. Cart and wishlist cleared.');
   };
 
   return (
     <Router>
-
       <Navbar
         isLoggedIn={isLoggedIn}
         onLogin={handleLogin}
@@ -65,63 +55,21 @@ function App() {
         wishlistItemsCount={wishlistItems.length}
       />
       <Routes>
-        <Route
-          path="/"
-          element={
-            <Home
-              isLoggedIn={isLoggedIn}
-              cartItems={cartItems}
-              setCartItems={setCartItems}
-              wishlistItems={wishlistItems}
-              setWishlistItems={setWishlistItems}
-            />
-          }
-        />
-        <Route
-  path="/cart"
-  element={
-    <Cart 
-      isLoggedIn={isLoggedIn} 
-      cartItems={cartItems} 
-      setCartItems={setCartItems} 
-    />
-  }
-/>
-        <Route
-  path="/wishlist"
-  element={
-    <Wishlist 
-      isLoggedIn={isLoggedIn} 
-      wishlistItems={wishlistItems} 
-      setWishlistItems={setWishlistItems} 
-    />
-  }
-/>
-        // In App.jsx, add this to your Routes component
-<Route 
-  path="/profile/:id" 
-  element={
-    <ProfilePage 
-      isLoggedIn={isLoggedIn}
-      cartItems={cartItems}
-      setCartItems={setCartItems}
-      wishlistItems={wishlistItems}
-      setWishlistItems={setWishlistItems}
-    />
-  } 
-/>
+        <Route path="/" element={<Home />} />
+        <Route path="/cart" element={<Cart />} />
+        <Route path="/wishlist" element={<Wishlist />} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
-
-        {/* Placeholder for signup, assuming it's not a full component yet */}
-        <Route path="/signup" element={<div className="min-h-screen bg-cream-white flex items-center justify-center text-2xl text-primary-pink">Sign Up Page</div>} />
-
-            </Routes>
+        <Route path="/profile/:id" element={<ProfilePage isLoggedIn={isLoggedIn} />} />
+      </Routes>
     </Router>
   );
 }
 
 export default App;
+
+
+
 
 
 

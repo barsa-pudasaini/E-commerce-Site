@@ -1,7 +1,7 @@
+// src/components/Featured.jsx
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
-// Images import garnu (timro assets folder bata)
 import idoroki from '../assets/idoroki.png';
 import Gojo from '../assets/Gojo.png';
 import Tomoe from '../assets/Tomoe.png';
@@ -23,7 +23,6 @@ import levi from '../assets/levi.png';
 import miyamura from '../assets/miyamura.png';
 import rinne from '../assets/rinne.png';
 
-// Characters ko data (array)
 const topCharacters = [
   { id: 1, name: 'Todoroki', image: idoroki, price: 200000, popularity: 90 },
   { id: 2, name: 'Gojo Satoru', image: Gojo, price: 15000, popularity: 80 },
@@ -51,15 +50,30 @@ const allCharacters = [
   { id: 20, name: 'Rinne Amagi', image: rinne, price: 69950, popularity: 3 },
 ];
 
-const Featured = () => {
+const Featured = ({ onAddToCart, onAddToWishlist }) => {
   const [sort, setSort] = useState('popularity');
 
-  // Sort garne logic
   const sortedAll = [...allCharacters].sort((a, b) => {
     if (sort === 'price-low') return a.price - b.price;
     if (sort === 'price-high') return b.price - a.price;
     return b.popularity - a.popularity;
   });
+
+  const cardStyle = {
+    backgroundColor: '#fff',
+    padding: '15px',
+    borderRadius: '12px',
+    boxShadow: '0 2px 5px rgba(0,0,0,0.1)',
+  };
+
+  const btnStyle = {
+    marginTop: '8px',
+    padding: '6px 10px',
+    border: 'none',
+    borderRadius: '6px',
+    cursor: 'pointer',
+    fontSize: '14px',
+  };
 
   return (
     <section style={{ padding: '30px' }}>
@@ -74,33 +88,27 @@ const Featured = () => {
         }}
       >
         {topCharacters.map((char) => (
-          <div
-            key={char.id}
-            style={{
-              backgroundColor: '#fff',
-              padding: '15px',
-              borderRadius: '12px',
-              boxShadow: '0 2px 5px rgba(0,0,0,0.1)',
-            }}
-          >
+          <div key={char.id} style={cardStyle}>
             <img src={char.image} alt={char.name} style={{ width: '100%', borderRadius: '10px' }} />
             <h3>{char.name}</h3>
             <p><strong>Price:</strong> Rs. {char.price}</p>
             <Link to={`/profile/${char.id}`}>
-              <button
-                style={{
-                  marginTop: '10px',
-                  padding: '8px 12px',
-                  backgroundColor: '#ff69b4',
-                  color: 'white',
-                  border: 'none',
-                  borderRadius: '6px',
-                  cursor: 'pointer',
-                }}
-              >
+              <button style={{ ...btnStyle, backgroundColor: '#ff69b4', color: 'white' }}>
                 View Profile
               </button>
             </Link>
+            <button
+              onClick={() => onAddToCart(char)}
+              style={{ ...btnStyle, backgroundColor: '#6EE7B7', marginRight: '5px' }}
+            >
+              Add to Cart
+            </button>
+            <button
+              onClick={() => onAddToWishlist(char)}
+              style={{ ...btnStyle, backgroundColor: '#FBCFE8' }}
+            >
+              Wishlist
+            </button>
           </div>
         ))}
       </div>
@@ -131,33 +139,27 @@ const Featured = () => {
         }}
       >
         {sortedAll.map((char) => (
-          <div
-            key={char.id}
-            style={{
-              backgroundColor: '#fff',
-              padding: '15px',
-              borderRadius: '12px',
-              boxShadow: '0 2px 5px rgba(0,0,0,0.1)',
-            }}
-          >
+          <div key={char.id} style={cardStyle}>
             <img src={char.image} alt={char.name} style={{ width: '100%', borderRadius: '10px' }} />
             <h3>{char.name}</h3>
             <p><strong>Price:</strong> Rs. {char.price}</p>
             <Link to={`/profile/${char.id}`}>
-              <button
-                style={{
-                  marginTop: '10px',
-                  padding: '8px 12px',
-                  backgroundColor: '#ff69b4',
-                  color: 'white',
-                  border: 'none',
-                  borderRadius: '6px',
-                  cursor: 'pointer',
-                }}
-              >
+              <button style={{ ...btnStyle, backgroundColor: '#ff69b4', color: 'white' }}>
                 View Profile
               </button>
             </Link>
+            <button
+              onClick={() => onAddToCart(char)}
+              style={{ ...btnStyle, backgroundColor: '#6EE7B7', marginRight: '5px' }}
+            >
+              Add to Cart
+            </button>
+            <button
+              onClick={() => onAddToWishlist(char)}
+              style={{ ...btnStyle, backgroundColor: '#FBCFE8' }}
+            >
+              Wishlist
+            </button>
           </div>
         ))}
       </div>
