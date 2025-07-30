@@ -81,11 +81,16 @@ import rinne2 from '../assets/rinne2.png';
 import rinne3 from '../assets/rinne3.png';
 import rinne4 from '../assets/rinne4.png';
 
-const characters = [
+ const characters = [
   {
     id: 1,
     name: 'Todoroki',
-    images: [t1, t2, t3, t4],
+    images: [
+      t1,
+      t2,
+      t3,
+      t4
+    ],
     price: 200000,
     rating: 4.5,
     description: 'Calm and powerful with fire and ice abilities.',
@@ -97,7 +102,12 @@ const characters = [
   {
     id: 2,
     name: 'Gojo Satoru',
-    images: [gojo1, gojo2, gojo3, gojo4],
+    images: [
+      gojo1,
+      gojo2,
+      gojo3,
+      gojo4
+    ],
     price: 15000,
     rating: 5,
     description: 'Strongest and playful.',
@@ -109,7 +119,12 @@ const characters = [
   {
     id: 3,
     name: 'Tomoe',
-    images: [tomoe1, tomoe2, tomoe3, tomoe4],
+    images: [
+        tomoe1,
+        tomoe2,
+        tomoe3,
+        tomoe4
+    ],
     price: 25030,
     rating: 4.8,
     description: 'Mysterious and charming spirit.',
@@ -121,7 +136,12 @@ const characters = [
   {
     id: 4,
     name: 'Howl loirissímo',
-    images: [howl1, howl2, howl3, howl4],
+    images: [
+        howl1,
+        howl2,
+        howl3,
+        howl4
+    ],
     price: 18050,
     rating: 4.7,
     description: 'Whimsical wizard.',
@@ -133,7 +153,12 @@ const characters = [
   {
     id: 5,
     name: 'Megumi Fushiguro',
-    images: [m1, m2, m3, m4],
+    images: [
+        m1,
+        m2,
+        m3,
+        m4
+    ],
     price: 17700,
     rating: 4.3,
     description: 'Serious and skilled sorcerer.',
@@ -145,7 +170,12 @@ const characters = [
   {
     id: 6,
     name: 'Sukuna Ryomen',
-    images: [sukuna1, sukuna2, sukuna3, sukuna4],
+    images: [
+        sukuna1,
+        sukuna2,
+        sukuna3,
+        sukuna4
+    ],
     price: 16800,
     rating: 4.0,
     description: 'Powerful cursed spirit.',
@@ -157,7 +187,12 @@ const characters = [
   {
     id: 7,
     name: 'Suguru Geto',
-    images: [suguru1, suguru2, suguru3, suguru4],
+    images: [
+        suguru1,
+        suguru2,
+        suguru3,
+        suguru4
+    ],
     price: 13500,
     rating: 4.1,
     description: 'Charismatic antagonist.',
@@ -169,7 +204,12 @@ const characters = [
   {
     id: 8,
     name: 'Osamu Dazai',
-    images: [osamu1, osamu2, osamu3, osamu4],
+    images: [
+        osamu1,
+        osamu2,
+        osamu3,
+        osamu4
+    ],
     price: 149900,
     rating: 4.2,
     description: 'Mysterious and clever.',
@@ -181,7 +221,12 @@ const characters = [
   {
     id: 9,
     name: 'Toji Fushiguro',
-    images: [toji1, toji2, toji3, toji4],
+    images: [
+        toji1,
+        toji2,
+        toji3,
+        toji4
+    ],
     price: 12950,
     rating: 4.4,
     description: 'Strong and silent.',
@@ -193,7 +238,12 @@ const characters = [
   {
     id: 10,
     name: 'Ken Kaneki',
-    images: [ken1, ken2, ken3, ken4],
+    images: [
+        ken1,
+        ken2,
+        ken3,
+        ken4
+    ],
     price: 11900,
     rating: 4.3,
     description: 'Complex and kind.',
@@ -205,7 +255,12 @@ const characters = [
   {
     id: 11,
     name: 'Tengen Uzui',
-    images: [tengen1, tengen2, tengen3, tengen4],
+    images: [
+        tengen1,
+        tengen2,
+        tengen3,
+        tengen4
+    ],
     price: 100050,
     rating: 4.6,
     description: 'Flashy and strong.',
@@ -217,7 +272,12 @@ const characters = [
   {
     id: 12,
     name: 'Toge Inumaki',
-    images: [toge1, toge2, toge3, toge4],
+    images: [
+      toge1,
+      toge2,
+      toge3,
+      toge4
+    ],
     price: 19150,
     rating: 4.4,
     description: 'Silent and mysterious.',
@@ -229,19 +289,29 @@ const characters = [
   {
     id: 13,
     name: 'Inosuke Hashibira',
-    images: [inosuke1, inosuke2, inosuke3, inosuke4],
+    images: [
+        inosuke1,
+        inosuke2,
+        inosuke3,
+        inosuke4
+    ],
     price: 12000,
     rating: 4.2,
     description: 'Wild and energetic.',
     personality: 'Loud, brave, loyal.',
     likes: ['Fighting', 'Freedom'],
     dislikes: ['Rules'],
-    dialogue: "Let's fight!",
+    dialogue: 'Let\'s fight!',
   },
   {
     id: 14,
     name: 'Akito Yamada',
-    images: [akito1, akito2, akito3, akito4],
+    images: [
+        akito1,
+        akito2,
+        akito3,
+        akito4
+    ],
     price: 95560,
     rating: 4.3,
     description: 'Strong and smart.',
@@ -253,7 +323,12 @@ const characters = [
   {
     id: 15,
     name: 'Gabimaru',
-    images: [gabimaru1, gabimaru2, gabimaru3, gabimaru4],
+    images: [
+      gabimaru1,
+      gabimaru2,
+      gabimaru3,
+      gabimaru4
+    ],
     price: 90990,
     rating: 4.0,
     description: 'Silent but deadly.',
@@ -265,7 +340,12 @@ const characters = [
   {
     id: 16,
     name: 'Yamato Endo',
-    images: [yamato1, yamato2, yamato3, yamato4],
+    images: [
+        yamato1,
+        yamato2,
+        yamato3,
+        yamato4
+    ],
     price: 87650,
     rating: 4.1,
     description: 'Loyal and brave.',
@@ -277,7 +357,12 @@ const characters = [
   {
     id: 17,
     name: 'Kazutora Hanemiya',
-    images: [kazutora1, kazutora2, kazutora3, kazutora4],
+    images: [
+        kazutora1,
+        kazutora2,
+        kazutora3,
+        kazutora4
+    ],
     price: 89900,
     rating: 4.2,
     description: 'Complex and passionate.',
@@ -289,7 +374,12 @@ const characters = [
   {
     id: 18,
     name: 'Levi Ackerman',
-    images: [levi1, levi2, levi3, levi4],
+    images: [
+        levi1,
+        levi2,
+        levi3,
+        levi4
+    ],
     price: 79850,
     rating: 5,
     description: 'Calm and deadly soldier.',
@@ -301,7 +391,12 @@ const characters = [
   {
     id: 19,
     name: 'Izumi Miyamura',
-    images: [izumi1, izumi2, izumi3, izumi4],
+    images: [
+        izumi1,
+        izumi2,
+        izumi3,
+        izumi4
+    ],
     price: 30700,
     rating: 4.1,
     description: 'Shy but kind.',
@@ -313,7 +408,12 @@ const characters = [
   {
     id: 20,
     name: 'Rinne Amagi',
-    images: [rinne1, rinne2, rinne3, rinne4],
+    images: [
+      rinne1,
+      rinne2,
+      rinne3,
+      rinne4
+    ],
     price: 69950,
     rating: 4.0,
     description: 'Mysterious and strong.',
@@ -324,19 +424,16 @@ const characters = [
   },
 ];
 
-const ProfilePage = ({ characterId, isLoggedIn }) => {
+ const ProfilePage = ({ isLoggedIn }) => {
   const { id } = useParams();
-const [currentImageIndex, setCurrentImageIndex] = useState(0);
-const [showRegister, setShowRegister] = useState(false);
-const [formData, setFormData] = useState({ email: '', password: '' });
-const [showLogin, setShowLogin] = useState(false);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [showRegister, setShowRegister] = useState(false);
+  const [formData, setFormData] = useState({ email: '', password: '' });
+  const [showLogin, setShowLogin] = useState(false);
+  const [cuteMsg, setCuteMsg] = useState('');
+  const [showCuteMsg, setShowCuteMsg] = useState(false);
 
-// Cute popup alert states
-const [cuteMsg, setCuteMsg] = useState('');
-const [showCuteMsg, setShowCuteMsg] = useState(false);
-
-// Find character by id or default to first
-const character = characters.find((c) => c.id === parseInt(id)) || characters[0];
+  const character = characters.find((c) => c.id === Number(id)) || characters[0];
 
   const nextImage = () => {
     setCurrentImageIndex((prev) => (prev + 1) % character.images.length);
@@ -371,9 +468,9 @@ const character = characters.find((c) => c.id === parseInt(id)) || characters[0]
       alert('Password must be at least 4 characters');
       return;
     }
-    // Instead of setting isLoggedIn here, the main App manages login state
     alert('Registration successful! You can now add to cart or wishlist.');
     setShowRegister(false);
+    setFormData({ email: '', password: '' });
   };
 
   return (
@@ -399,7 +496,13 @@ const character = characters.find((c) => c.id === parseInt(id)) || characters[0]
       <p><strong>Price:</strong> Rs. {character.price}</p>
 
       <button
-        onClick={() => showCuteAlert('Yay! Rented successfully..I\'m on my way (❁´◡`❁)')}
+        onClick={() => {
+          if (!isLoggedIn) {
+            setShowRegister(true);
+          } else {
+            showCuteAlert('Yay! Rented successfully..I\'m on my way (❁´◡`❁)');
+          }
+        }}
         style={rentBtnStyle}
       >
         Rent
@@ -544,3 +647,6 @@ const cancelBtnStyle = {
 };
 
 export default ProfilePage;
+
+
+

@@ -173,23 +173,22 @@ const Navbar = ({
             </button>
           )}
         </li>
-
-        <li>
-          <Link to="/signup" style={linkStyle}>
-            Sign Up
-          </Link>
-        </li>
-        <li>
-          <Link to="/about" style={linkStyle}>
-            About
-          </Link>
-        </li>
-        <li>
-          <Link to="/contact" style={linkStyle}>
-            Contact
-          </Link>
-        </li>
-      </ul>
+  <li>
+    <Link to="/signup" style={linkStyle}>
+      Sign Up
+    </Link>
+  </li>
+  <li>
+    <Link to="/about" style={linkStyle}>
+      About
+    </Link>
+  </li>
+  <li>
+    <Link to="/contact" style={linkStyle}>
+      Contact
+    </Link>
+  </li>
+</ul>
 
       {showAuthModal && (
         <div
@@ -288,4 +287,4 @@ const Navbar = ({
   );
 };
 
-export default Navbar;
+export default Navbar; 
