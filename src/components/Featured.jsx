@@ -97,18 +97,7 @@ const Featured = ({ onAddToCart, onAddToWishlist }) => {
                 View Profile
               </button>
             </Link>
-            <button
-              onClick={() => onAddToCart(char)}
-              style={{ ...btnStyle, backgroundColor: '#6EE7B7', marginRight: '5px' }}
-            >
-              Add to Cart
-            </button>
-            <button
-              onClick={() => onAddToWishlist(char)}
-              style={{ ...btnStyle, backgroundColor: '#FBCFE8' }}
-            >
-              Wishlist
-            </button>
+           
           </div>
         ))}
       </div>
@@ -148,18 +137,7 @@ const Featured = ({ onAddToCart, onAddToWishlist }) => {
                 View Profile
               </button>
             </Link>
-            <button
-              onClick={() => onAddToCart(char)}
-              style={{ ...btnStyle, backgroundColor: '#6EE7B7', marginRight: '5px' }}
-            >
-              Add to Cart
-            </button>
-            <button
-              onClick={() => onAddToWishlist(char)}
-              style={{ ...btnStyle, backgroundColor: '#FBCFE8' }}
-            >
-              Wishlist
-            </button>
+           
           </div>
         ))}
       </div>
