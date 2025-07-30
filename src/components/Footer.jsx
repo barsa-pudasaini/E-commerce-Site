@@ -10,7 +10,7 @@ const Footer = () => {
         marginTop: '50px',
       }}
     >
-      <p>Because sometimes 2D is the better dimension</p>
+      <p>"Because sometimes 2D is the better dimension"</p>
     </footer>
   );
 };

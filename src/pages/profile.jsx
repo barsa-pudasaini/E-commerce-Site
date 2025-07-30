@@ -432,8 +432,7 @@ const characters = [
   const [cuteMsg, setCuteMsg] = useState('');
   const [showCuteMsg, setShowCuteMsg] = useState(false);
 
-  const character = characters.find((c) => c.id === characterId) || characters[0];
-
+  const character = characters.find((c) => c.id === Number(characterId)) || characters[0];
   const nextImage = () => {
     setCurrentImageIndex((prev) => (prev + 1) % character.images.length);
   };

@@ -1,59 +1,92 @@
 // src/pages/About.jsx
 import React from 'react';
+import { Heart, Sparkles, UserCheck } from 'lucide-react';
+
+import grishma from '../assets/grishma.png';
+import garima from '../assets/garima.png';
+import aakrisha from '../assets/aakrisha.png';
+import monsoon from '../assets/monsoon.png';
 
 const About = () => {
-  // Team member data
   const teamMembers = [
     {
       name: 'Grishma',
-      avatar: '/images/avatars/grishma.jpg', // Ensure this path is correct and file exists in public/images/avatars/
-      bio: 'Our creative visionary, bringing the magic of anime companionship to life!',
+      avatar: grishma,
+      bio: 'Because why cry over a real man when you can code a better one?',
     },
     {
       name: 'Garima',
-      avatar: '/images/avatars/garima.jpg', // Ensure this path is correct and file exists in public/images/avatars/
-      bio: 'The strategic mind behind our perfect matches, ensuring every rental is a dream.',
+      avatar: garima,
+      bio: 'Dating apps gave you the ick? We give you options.',
     },
     {
       name: 'Aakrisha',
-      avatar: '/images/avatars/aakrisha.jpg', // Ensure this path is correct and file exists in public/images/avatars/
+      avatar: aakrisha,
       bio: 'User experience wizard, making sure your journey to find companionship is smooth and delightful.',
     },
     {
       name: 'Monsoon',
-      avatar: '/images/avatars/monsoon.jpg', // Ensure this path is correct and file exists in public/images/avatars/
+      avatar: monsoon,
       bio: 'Our tech maestro, building the reliable platform that connects you with your ideal anime partner.',
     },
   ];
 
   return (
-    <div className="bg-cream-white min-h-screen py-12 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-4xl mx-auto">
-        <h1 className="text-4xl font-extrabold text-primary-pink text-center mb-8">
-          About Us: Rent A Boyfriend
+    <div className="bg-gradient-to-br from-pink-50 to-purple-50 min-h-screen py-16 px-4 sm:px-6 lg:px-8 font-sans">
+      <div className="max-w-5xl mx-auto">
+        <h1 className="text-5xl font-extrabold text-primary-pink text-center mb-12 drop-shadow-lg flex items-center justify-center gap-4">
+          <Heart size={48} className="text-red-400" />
+          Welcome to Rent A Boyfriend
+          <Heart size={48} className="text-red-400" />
         </h1>
 
-        {/* Brief Intro - NEW VERY LIGHT BACKGROUND, DARK TEXT FOR READABILITY */}
-        <section className="mb-12 p-8 rounded-lg shadow-lg" style={{ backgroundColor: '#FFF5EE' /* Very light Seashell/Blush pink */ }}>
-          <h2 className="text-3xl font-bold text-gray-800 mb-4">Your Perfect Anime Companion Awaits!</h2>
-          <p className="text-gray-700 text-lg leading-relaxed">
-            Welcome to **Rent A Boyfriend**! We bring your anime dreams to life, connecting you with charming, supportive virtual companions tailored to your desires. It's a whimsical escape and a joyful connection to the characters you adore. Dive in!
+        {/* Intro Section */}
+        <section className="mb-16 bg-white p-10 rounded-2xl shadow-xl border border-pink-200 backdrop-blur-sm bg-opacity-90">
+          <h2 className="text-4xl font-bold text-accent-blue mb-6 text-center flex items-center justify-center gap-3">
+            Your Ultimate Anime Companion Adventure!
+          </h2>
+          <p className="text-gray-800 text-xl leading-relaxed mt-4">
+            Ever wished for a perfectly understanding companion from your favorite animated worlds? <strong>Rent A Boyfriend</strong> makes that dream a reality!
+          </p>
+          <p className="text-gray-800 text-xl leading-relaxed mt-6">
+            Need a witty conversationalist, a stoic protector, or a gentle listener? Our companions fill your life with joy and imagination.
+          </p>
+          <p className="text-gray-800 text-xl leading-relaxed mt-6">
+            Dive into a delightful escape, and truly connect with the characters you adore. <Sparkles className="inline-block ml-2 text-yellow-400 animate-pulse" />
           </p>
         </section>
 
-        {/* Meet the Team */}
-        <section className="bg-white p-8 rounded-lg shadow-lg">
-          <h2 className="text-3xl font-bold text-accent-blue text-center mb-8">Meet the Team Behind the Magic</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        {/* Team Section */}
+        <section className="bg-white p-10 rounded-2xl shadow-xl border border-blue-200 backdrop-blur-sm bg-opacity-90">
+          <h2 className="text-4xl font-bold text-accent-blue text-center mb-10 flex items-center justify-center gap-3">
+            <UserCheck size={36} className="text-green-500" />
+            Meet the Brilliant Minds Behind the Magic!
+          </h2>
+
+          <div className="space-y-6">
             {teamMembers.map((member, index) => (
-              <div key={index} className="flex flex-col items-center text-center p-4 bg-gray-50 rounded-lg shadow-sm">
+              <div
+                key={index}
+                className="flex items-center justify-between bg-gradient-to-br from-blue-50 to-pink-50 p-5 rounded-xl border border-purple-100 shadow-md group hover:shadow-lg transition duration-300"
+              >
+                {/* Text */}
+                <div className="flex flex-col text-left flex-grow pr-4">
+                  <h3 className="text-xl font-semibold text-primary-pink group-hover:text-purple-600 transition-colors duration-300">
+                    {member.name}
+                  </h3>
+                  <p className="text-gray-700 italic mt-1">
+                    "{member.bio}"
+                  </p>
+                </div>
+
+                {/* Image */}
                 <img
-                  src={member.avatar}
-                  alt={member.name}
-                  className="w-32 h-32 rounded-full object-cover border-4 border-secondary-pink mb-4"
-                />
-                <h3 className="text-xl font-semibold text-primary-pink mb-2">{member.name}</h3>
-                <p className="text-gray-600 text-sm italic">"{member.bio}"</p>
+  src={member.avatar}
+  alt={member.name}
+  style={{ width: '250px', height: '250px' }}
+  className="rounded-full object-cover border-2 border-pink-300 shadow-md shrink-0"
+/>
+
               </div>
             ))}
           </div>
@@ -63,4 +96,4 @@ const About = () => {
   );
 };
 
-export default About;
+export default About;  
