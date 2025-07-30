@@ -1,96 +1,183 @@
-// src/pages/Contact.jsx
 import React, { useState } from 'react';
+import { Mail, User, MessageSquare, Send } from 'lucide-react';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
-    message: '',
+    message: ''
   });
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prevData) => ({
-      ...prevData,
-      [name]: value,
-    }));
-  };
-
   const handleSubmit = (e) => {
-    e.preventDefault(); // Prevent the default form submission behavior (page reload)
-    alert("Message sent! We'll get back to you after this episode."); // Cute message
-    console.log('Form Submitted:', formData); // Log data for demonstration
-    // Optionally reset the form:
+    e.preventDefault();
+    alert("💌 Message sent! We'll reply after this episode.");
     setFormData({ name: '', email: '', message: '' });
   };
 
   return (
-    <div className="bg-cream-white min-h-screen py-12 px-4 sm:px-6 lg:px-8 flex items-center justify-center">
-      <div className="max-w-xl w-full bg-white p-8 rounded-lg shadow-lg">
-        <h1 className="text-4xl font-extrabold text-primary-pink text-center mb-8">
+    <div style={{
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
+      minHeight: '100vh',
+      backgroundColor: '#fff5f7', // Very light pink
+      padding: '20px',
+      fontFamily: 'sans-serif'
+    }}>
+      <div style={{
+        width: '100%',
+        maxWidth: '500px',
+        backgroundColor: 'white',
+        padding: '30px',
+        borderRadius: '12px',
+        boxShadow: '0 4px 20px rgba(255, 105, 140, 0.15)'
+      }}>
+        <h1 style={{
+          textAlign: 'center',
+          marginBottom: '30px',
+          color: '#ff6b81', // Brand pink
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          gap: '10px'
+        }}>
+          <Mail size={24} />
           Contact Us
         </h1>
-
-        <form onSubmit={handleSubmit} className="space-y-6">
+        
+        <form onSubmit={handleSubmit} style={{
+          display: 'flex',
+          flexDirection: 'column',
+          gap: '20px'
+        }}>
+          {/* Name Field */}
           <div>
-            <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
+            <label style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: '8px',
+              marginBottom: '8px',
+              fontWeight: '500',
+              color: '#555'
+            }}>
+              <User size={18} />
               Your Name
             </label>
             <input
               type="text"
-              id="name"
-              name="name"
               value={formData.name}
-              onChange={handleChange}
-              required
-              className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-accent-blue focus:border-accent-blue sm:text-sm"
+              onChange={(e) => setFormData({...formData, name: e.target.value})}
+              style={{
+                width: '100%',
+                padding: '12px',
+                border: '1px solid #ffb8c6',
+                borderRadius: '8px',
+                fontSize: '16px',
+                transition: 'all 0.2s',
+                outline: 'none'
+              }}
               placeholder="E.g., Anime Fanatic"
+              required
             />
           </div>
 
+          {/* Email Field */}
           <div>
-            <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
+            <label style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: '8px',
+              marginBottom: '8px',
+              fontWeight: '500',
+              color: '#555'
+            }}>
+              <Mail size={18} />
               Your Email
             </label>
             <input
               type="email"
-              id="email"
-              name="email"
               value={formData.email}
-              onChange={handleChange}
+              onChange={(e) => setFormData({...formData, email: e.target.value})}
+              style={{
+                width: '100%',
+                padding: '12px',
+                border: '1px solid #ffb8c6',
+                borderRadius: '8px',
+                fontSize: '16px',
+                transition: 'all 0.2s',
+                outline: 'none'
+              }}
+              placeholder="your@email.com"
               required
-              className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-accent-blue focus:border-accent-blue sm:text-sm"
-              placeholder="E.g., bestfanever@anime.com"
             />
           </div>
 
+          {/* Message Field */}
           <div>
-            <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">
-              Your Message / Feedback
+            <label style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: '8px',
+              marginBottom: '8px',
+              fontWeight: '500',
+              color: '#555'
+            }}>
+              <MessageSquare size={18} />
+              Your Message
             </label>
             <textarea
-              id="message"
-              name="message"
               value={formData.message}
-              onChange={handleChange}
+              onChange={(e) => setFormData({...formData, message: e.target.value})}
               rows="5"
+              style={{
+                width: '100%',
+                padding: '12px',
+                border: '1px solid #ffb8c6',
+                borderRadius: '8px',
+                fontSize: '16px',
+                transition: 'all 0.2s',
+                outline: 'none',
+                resize: 'vertical'
+              }}
+              placeholder="Tell us what's on your mind..."
               required
-              className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-accent-blue focus:border-accent-blue sm:text-sm resize-y"
-              placeholder="Tell us what's on your mind... or suggest a new boyfriend type!"
-            ></textarea>
+            />
           </div>
 
+          {/* Submit Button */}
           <button
             type="submit"
-            // Changed text-white to text-black
-            className="w-full flex justify-center py-3 px-4 border border-transparent rounded-md shadow-sm text-lg font-medium text-black bg-pink-600 hover:bg-pink-30 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-pink-500 transition duration-200"
+            style={{
+              backgroundColor: '#ff6b81',
+              color: 'white',
+              padding: '14px',
+              border: 'none',
+              borderRadius: '8px',
+              cursor: 'pointer',
+              fontWeight: '600',
+              fontSize: '16px',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              gap: '8px',
+              transition: 'all 0.2s',
+              marginTop: '10px'
+            }}
+            onMouseOver={(e) => e.currentTarget.style.backgroundColor = '#ff5171'}
+            onMouseOut={(e) => e.currentTarget.style.backgroundColor = '#ff6b81'}
           >
+            <Send size={18} />
             Send Message
           </button>
         </form>
 
-        <p className="text-center text-gray-600 text-md mt-6 italic">
-          "We'll get back to you after this episode."
+        <p style={{
+          textAlign: 'center',
+          marginTop: '30px',
+          color: '#888',
+          fontStyle: 'italic'
+        }}>
+          "We'll get back to you after this episode — promise! 💕"
         </p>
       </div>
     </div>

@@ -9,7 +9,8 @@ import Home from './pages/Home';         // Make sure your file is Home.jsx
 import Cart from './pages/Cart';         // Make sure your file is Cart.jsx
 import Wishlist from './pages/Wishlist'; // Make sure your file is Wishlist.jsx
 import About from './pages/About';       // Make sure your file is About.jsx
-import Contact from './pages/Contact';   // Make sure your file is Contact.jsx
+import Contact from './pages/Contact'; 
+import ProfilePage from './pages/profile';  // Make sure your file is Contact.jsx
 
 function App() {
   // Central state for login, cart, and wishlist
@@ -77,18 +78,38 @@ function App() {
           }
         />
         <Route
-          path="/cart"
-          element={
-            <Cart cartItems={cartItems} setCartItems={setCartItems} />
-          }
-        />
+  path="/cart"
+  element={
+    <Cart 
+      isLoggedIn={isLoggedIn} 
+      cartItems={cartItems} 
+      setCartItems={setCartItems} 
+    />
+  }
+/>
         <Route
-          path="/wishlist"
-          element={
-            <Wishlist wishlistItems={wishlistItems} setWishlistItems={setWishlistItems} />
-          }
-        />
-        {/* These are your new routes for About and Contact */}
+  path="/wishlist"
+  element={
+    <Wishlist 
+      isLoggedIn={isLoggedIn} 
+      wishlistItems={wishlistItems} 
+      setWishlistItems={setWishlistItems} 
+    />
+  }
+/>
+        // In App.jsx, add this to your Routes component
+<Route 
+  path="/profile/:id" 
+  element={
+    <ProfilePage 
+      isLoggedIn={isLoggedIn}
+      cartItems={cartItems}
+      setCartItems={setCartItems}
+      wishlistItems={wishlistItems}
+      setWishlistItems={setWishlistItems}
+    />
+  } 
+/>
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
 

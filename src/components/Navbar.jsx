@@ -1,14 +1,24 @@
-
-// src/components/Navbar.jsx
 import React, { useState } from 'react';
 import { ShoppingCart, Heart } from 'lucide-react';
 import { Link, useNavigate } from 'react-router-dom';
 
-const Navbar = ({ isLoggedIn, onLogin, onLogout, cartItemsCount, wishlistItemsCount }) => {
-  const [showLoginModal, setShowLoginModal] = useState(false);
+const Navbar = ({
+  isLoggedIn,
+  onLogin,
+  onLogout,
+  cartItemsCount,
+  wishlistItemsCount,
+}) => {
+  const [showAuthModal, setShowAuthModal] = useState(false);
+  const [isLoginMode, setIsLoginMode] = useState(true); // true = login, false = register
+  const [postLoginNavigate, setPostLoginNavigate] = useState(null);
+
+  const [formData, setFormData] = useState({ email: '', password: '' });
+
   const navigate = useNavigate();
 
-  // Your existing styles (keep them as they are)
+  const resetForm = () => setFormData({ email: '', password: '' });
+
   const linkStyle = {
     textDecoration: 'none',
     color: '#333',
@@ -44,19 +54,51 @@ const Navbar = ({ isLoggedIn, onLogin, onLogout, cartItemsCount, wishlistItemsCo
     justifyContent: 'center',
   };
 
-  const handleLoginSubmit = (e) => {
+  const validateEmail = (email) => email.includes('@') && email.includes('.');
+
+  const handleAuthSubmit = (e) => {
     e.preventDefault();
-    onLogin();
-    setShowLoginModal(false);
+    const { email, password } = formData;
+    if (!validateEmail(email)) {
+      alert('Please enter a valid email address');
+      return;
+    }
+    if (password.length < 4) {
+      alert('Password must be at least 4 characters');
+      return;
+    }
+    if (isLoginMode) {
+      // Dummy login success
+      onLogin();
+      alert('Login successful! 🎉');
+    } else {
+      // Dummy register success
+      alert('Registration successful! Please log in now.');
+      setIsLoginMode(true);
+      resetForm();
+      return;
+    }
+    setShowAuthModal(false);
+    resetForm();
+
+    // Navigate if user intended a page after login/registration
+    if (postLoginNavigate) {
+      navigate(postLoginNavigate);
+      setPostLoginNavigate(null);
+    }
   };
 
-  const handleLogoutClick = () => {
-    onLogout();
+  const promptAuthModal = (mode, targetPath = null) => {
+    setIsLoginMode(mode === 'login');
+    setShowAuthModal(true);
+    setPostLoginNavigate(targetPath);
+    resetForm();
   };
 
   const handleCartClick = () => {
     if (!isLoggedIn) {
-      setShowLoginModal(true);
+      promptAuthModal('login', '/cart');
+      alert('Please login to view your cart.');
     } else {
       navigate('/cart');
     }
@@ -64,54 +106,53 @@ const Navbar = ({ isLoggedIn, onLogin, onLogout, cartItemsCount, wishlistItemsCo
 
   const handleWishlistClick = () => {
     if (!isLoggedIn) {
-      setShowLoginModal(true);
+      promptAuthModal('login', '/wishlist');
+      alert('Please login to view your wishlist.');
     } else {
       navigate('/wishlist');
     }
   };
 
+  const handleLogoutClick = () => {
+    onLogout();
+  };
+
   return (
-    <nav style={{
-      display: 'flex',
-      justifyContent: 'space-between',
-      padding: '15px 30px',
-      backgroundColor: '#ffe6f0',
-      alignItems: 'center',
-      fontFamily: 'sans-serif'
-    }}>
+    <nav
+      style={{
+        display: 'flex',
+        justifyContent: 'space-between',
+        padding: '15px 30px',
+        backgroundColor: '#ffe6f0',
+        alignItems: 'center',
+        fontFamily: 'sans-serif',
+      }}
+    >
       <Link to="/" style={{ fontWeight: 'bold', fontSize: '24px', textDecoration: 'none', color: 'inherit' }}>
         Rent A Boyfriend
       </Link>
 
-      <ul style={{
-        listStyle: 'none',
-        display: 'flex',
-        gap: '20px',
-        margin: 0,
-        padding: 0,
-        alignItems: 'center',
-      }}>
+      <ul
+        style={{
+          listStyle: 'none',
+          display: 'flex',
+          gap: '20px',
+          margin: 0,
+          padding: 0,
+          alignItems: 'center',
+        }}
+      >
         <li>
-          <div
-            style={iconButtonStyle}
-            onClick={handleCartClick}
-          >
+          <div style={iconButtonStyle} onClick={handleCartClick}>
             <ShoppingCart size={24} color="#333" />
-            {isLoggedIn && cartItemsCount > 0 && (
-              <span style={badgeStyle}>{cartItemsCount}</span>
-            )}
+            {isLoggedIn && cartItemsCount > 0 && <span style={badgeStyle}>{cartItemsCount}</span>}
           </div>
         </li>
 
         <li>
-          <div
-            style={iconButtonStyle}
-            onClick={handleWishlistClick}
-          >
+          <div style={iconButtonStyle} onClick={handleWishlistClick}>
             <Heart size={24} color="#333" strokeWidth={1.5} />
-            {isLoggedIn && wishlistItemsCount > 0 && (
-              <span style={badgeStyle}>{wishlistItemsCount}</span>
-            )}
+            {isLoggedIn && wishlistItemsCount > 0 && <span style={badgeStyle}>{wishlistItemsCount}</span>}
           </div>
         </li>
 
@@ -125,45 +166,121 @@ const Navbar = ({ isLoggedIn, onLogin, onLogout, cartItemsCount, wishlistItemsCo
             </button>
           ) : (
             <button
-              onClick={() => setShowLoginModal(true)}
+              onClick={() => promptAuthModal('login')}
               style={{ ...linkStyle, background: 'none', border: 'none', cursor: 'pointer', padding: 0 }}
             >
               Log In
             </button>
           )}
         </li>
-        <li><Link to="/signup" style={linkStyle}>Sign Up</Link></li>
-        <li><Link to="/about" style={linkStyle}>About</Link></li>     {/* This links to your new About page */}
-        <li><Link to="/contact" style={linkStyle}>Contact</Link></li> {/* This links to your new Contact page */}
+
+        <li>
+          <Link to="/signup" style={linkStyle}>
+            Sign Up
+          </Link>
+        </li>
+        <li>
+          <Link to="/about" style={linkStyle}>
+            About
+          </Link>
+        </li>
+        <li>
+          <Link to="/contact" style={linkStyle}>
+            Contact
+          </Link>
+        </li>
       </ul>
 
-      {showLoginModal && (
-        <div style={{
-          position: 'fixed', top: 0, left: 0, right: 0, bottom: 0,
-          backgroundColor: 'rgba(0,0,0,0.5)', display: 'flex',
-          justifyContent: 'center', alignItems: 'center', zIndex: 1000,
-        }} onClick={() => setShowLoginModal(false)}>
-          <div style={{
-            backgroundColor: 'white', padding: '20px', borderRadius: '10px', width: '300px',
-          }} onClick={e => e.stopPropagation()}>
-            <h2 style={{ marginBottom: '15px', textAlign: 'center' }}>Login</h2>
-            <form onSubmit={handleLoginSubmit}>
-              <div style={{ marginBottom: '15px' }}>
-                <input type="email" placeholder="Email" style={{ width: '100%', padding: '8px', borderRadius: '4px', border: '1px solid #ccc' }} required />
-              </div>
-              <div style={{ marginBottom: '20px' }}>
-                <input type="password" placeholder="Password" style={{ width: '100%', padding: '8px', borderRadius: '4px', border: '1px solid #ccc' }} required />
-              </div>
+      {showAuthModal && (
+        <div
+          style={{
+            position: 'fixed',
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            backgroundColor: 'rgba(0,0,0,0.5)',
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            zIndex: 1000,
+          }}
+          onClick={() => setShowAuthModal(false)}
+        >
+          <div
+            style={{
+              backgroundColor: 'white',
+              padding: '30px',
+              borderRadius: '10px',
+              width: '320px',
+              boxShadow: '0 0 15px rgba(0,0,0,0.3)',
+            }}
+            onClick={(e) => e.stopPropagation()}
+          >
+            <h2 style={{ marginBottom: '15px', textAlign: 'center' }}>{isLoginMode ? 'Login' : 'Register'}</h2>
+            <form onSubmit={handleAuthSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '15px' }}>
+              <input
+                type="email"
+                placeholder="Email"
+                value={formData.email}
+                onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                required
+                style={{
+                  padding: '10px',
+                  borderRadius: '6px',
+                  border: '1px solid #ccc',
+                }}
+              />
+              <input
+                type="password"
+                placeholder="Password"
+                value={formData.password}
+                onChange={(e) => setFormData({ ...formData, password: e.target.value })}
+                required
+                style={{
+                  padding: '10px',
+                  borderRadius: '6px',
+                  border: '1px solid #ccc',
+                }}
+              />
               <button
                 type="submit"
                 style={{
-                  width: '100%', padding: '10px', backgroundColor: '#ff4081',
-                  color: 'white', border: 'none', borderRadius: '5px', cursor: 'pointer',
+                  backgroundColor: '#ff4081',
+                  color: 'white',
+                  padding: '12px',
+                  border: 'none',
+                  borderRadius: '8px',
+                  fontWeight: 'bold',
+                  cursor: 'pointer',
+                  fontSize: '16px',
                 }}
               >
-                Login
+                {isLoginMode ? 'Login' : 'Register'}
               </button>
             </form>
+            <p
+              onClick={() => setIsLoginMode(!isLoginMode)}
+              style={{ marginTop: '15px', textAlign: 'center', cursor: 'pointer', color: '#ff4081', userSelect: 'none' }}
+            >
+              {isLoginMode ? 'Need an account? Register' : 'Already have an account? Login'}
+            </p>
+            <button
+              type="button"
+              onClick={() => setShowAuthModal(false)}
+              style={{
+                marginTop: '10px',
+                backgroundColor: 'gray',
+                color: 'white',
+                padding: '8px',
+                border: 'none',
+                borderRadius: '6px',
+                cursor: 'pointer',
+                width: '100%',
+              }}
+            >
+              Cancel
+            </button>
           </div>
         </div>
       )}
