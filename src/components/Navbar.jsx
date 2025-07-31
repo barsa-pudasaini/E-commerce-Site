@@ -10,10 +10,10 @@ const Navbar = ({
   wishlistItemsCount,
 }) => {
   const [showAuthModal, setShowAuthModal] = useState(false);
-  const [isLoginMode, setIsLoginMode] = useState(true); // true = login, false = register
+  const [isLoginMode, setIsLoginMode] = useState(true);
   const [postLoginNavigate, setPostLoginNavigate] = useState(null);
-
   const [formData, setFormData] = useState({ email: '', password: '' });
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const navigate = useNavigate();
 
@@ -68,11 +68,9 @@ const Navbar = ({
       return;
     }
     if (isLoginMode) {
-      // Dummy login success
       onLogin();
       alert('Login successful! 🎉');
     } else {
-      // Dummy register success
       alert('Registration successful! Please log in now.');
       setIsLoginMode(true);
       resetForm();
@@ -80,8 +78,6 @@ const Navbar = ({
     }
     setShowAuthModal(false);
     resetForm();
-
-    // Navigate if user intended a page after login/registration
     if (postLoginNavigate) {
       navigate(postLoginNavigate);
       setPostLoginNavigate(null);
@@ -118,86 +114,118 @@ const Navbar = ({
   };
 
   return (
-    <nav
-      style={{
-        display: 'flex',
-        justifyContent: 'space-between',
-        padding: '15px 30px',
-        backgroundColor: '#ffe6f0',
-        alignItems: 'center',
-        fontFamily: 'sans-serif',
-      }}
-    >
-      <Link to="/" style={{ fontWeight: 'bold', fontSize: '24px', textDecoration: 'none', color: 'inherit' }}>
-        Rent A Boyfriend
-      </Link>
-
-      <ul
+    <>
+      <nav
         style={{
-          listStyle: 'none',
           display: 'flex',
-          gap: '20px',
-          margin: 0,
-          padding: 0,
+          justifyContent: 'space-between',
+          padding: '15px 30px',
+          backgroundColor: '#ffe6f0',
           alignItems: 'center',
+          fontFamily: 'sans-serif',
+          position: 'relative',
         }}
       >
-        <li>
-          <div style={iconButtonStyle} onClick={handleCartClick}>
-            <ShoppingCart size={24} color="#333" />
-            {isLoggedIn && cartItemsCount > 0 && <span style={badgeStyle}>{cartItemsCount}</span>}
-          </div>
-        </li>
+        <Link to="/" style={{ fontWeight: 'bold', fontSize: '24px', textDecoration: 'none', color: 'inherit' }}>
+          Rent A Boyfriend
+        </Link>
 
-        <li>
-          <div style={iconButtonStyle} onClick={handleWishlistClick}>
-            <Heart size={24} color="#333" strokeWidth={1.5} />
-            {isLoggedIn && wishlistItemsCount > 0 && <span style={badgeStyle}>{wishlistItemsCount}</span>}
-          </div>
-        </li>
+        {/* Hamburger for Mobile */}
+        <button
+          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          className="hamburger"
+          style={{
+            display: 'none',
+            background: 'none',
+            border: 'none',
+            fontSize: '24px',
+            cursor: 'pointer',
+          }}
+        >
+          ☰
+        </button>
 
-        <li>
+        {/* Desktop Menu */}
+        <div className="nav-links">
+          <ul
+            style={{
+              listStyle: 'none',
+              display: 'flex',
+              gap: '20px',
+              margin: 0,
+              padding: 0,
+              alignItems: 'center',
+            }}
+          >
+            <li>
+              <div style={iconButtonStyle} onClick={handleCartClick}>
+                <ShoppingCart size={24} color="#333" />
+                {isLoggedIn && cartItemsCount > 0 && <span style={badgeStyle}>{cartItemsCount}</span>}
+              </div>
+            </li>
+            <li>
+              <div style={iconButtonStyle} onClick={handleWishlistClick}>
+                <Heart size={24} color="#333" strokeWidth={1.5} />
+                {isLoggedIn && wishlistItemsCount > 0 && <span style={badgeStyle}>{wishlistItemsCount}</span>}
+              </div>
+            </li>
+            <li>
+              {isLoggedIn ? (
+                <button onClick={handleLogoutClick} style={{ ...linkStyle, background: 'none', border: 'none', cursor: 'pointer', padding: 0 }}>
+                  Log Out
+                </button>
+              ) : (
+                <button onClick={() => promptAuthModal('login')} style={{ ...linkStyle, background: 'none', border: 'none', cursor: 'pointer', padding: 0 }}>
+                  Log In
+                </button>
+              )}
+            </li>
+            {!isLoggedIn && (
+              <li>
+                <button onClick={() => { setIsLoginMode(false); setShowAuthModal(true); resetForm(); }} style={{ ...linkStyle, background: 'none', border: 'none', cursor: 'pointer', padding: 0 }}>
+                  Sign Up
+                </button>
+              </li>
+            )}
+            <li>
+              <Link to="/about" style={linkStyle}>About</Link>
+            </li>
+            <li>
+              <Link to="/contact" style={linkStyle}>Contact</Link>
+            </li>
+          </ul>
+        </div>
+      </nav>
+
+      {/* Mobile Menu Dropdown */}
+      {isMobileMenuOpen && (
+        <div
+          className="mobile-menu"
+          style={{
+            display: 'flex',
+            flexDirection: 'column',
+            gap: '15px',
+            padding: '20px 30px',
+            backgroundColor: '#fff0f5',
+            borderTop: '1px solid #ccc',
+          }}
+        >
+          <button onClick={handleCartClick} style={linkStyle}>Cart</button>
+          <button onClick={handleWishlistClick} style={linkStyle}>Wishlist</button>
           {isLoggedIn ? (
-            <button
-              onClick={handleLogoutClick}
-              style={{ ...linkStyle, background: 'none', border: 'none', cursor: 'pointer', padding: 0 }}
-            >
-              Log Out
-            </button>
+            <button onClick={handleLogoutClick} style={linkStyle}>Log Out</button>
           ) : (
-            <button
-              onClick={() => promptAuthModal('login')}
-              style={{ ...linkStyle, background: 'none', border: 'none', cursor: 'pointer', padding: 0 }}
-            >
-              Log In
-            </button>
+            <>
+              <button onClick={() => promptAuthModal('login')} style={linkStyle}>Log In</button>
+              <button onClick={() => { setIsLoginMode(false); setShowAuthModal(true); resetForm(); }} style={linkStyle}>Sign Up</button>
+            </>
           )}
-        </li>
-  <li>
-  <button
-    onClick={() => {
-      setIsLoginMode(false); // show register form
-      setShowAuthModal(true);
-      resetForm();
-    }}
-    style={{ ...linkStyle, background: 'none', border: 'none', cursor: 'pointer', padding: 0 }}
-  >
-    Sign Up
-  </button>
-</li>
+          <Link to="/about" style={linkStyle}>About</Link>
+          <Link to="/contact" style={linkStyle}>Contact</Link>
+        </div>
+      )}
 
-  <li>
-    <Link to="/about" style={linkStyle}>
-      About
-    </Link>
-  </li>
-  <li>
-    <Link to="/contact" style={linkStyle}>
-      Contact
-    </Link>
-  </li>
-</ul>
-
+      {/* Auth Modal */}
       {showAuthModal && (
         <div
           style={{
@@ -291,8 +319,22 @@ const Navbar = ({
           </div>
         </div>
       )}
-    </nav>
+
+      {/* Responsive CSS */}
+      <style>
+        {`
+          @media (max-width: 768px) {
+            .nav-links {
+              display: none;
+            }
+            .hamburger {
+              display: block !important;
+            }
+          }
+        `}
+      </style>
+    </>
   );
 };
 
-export default Navbar; 
+export default Navbar;
